@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Found — Portal Minecraft</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        app: {
+                            bg: '#0b0f17',
+                            panel: '#131a27',
+                            card: '#182232',
+                            border: '#233044',
+                            accent: '#10b981',
+                            mediafire: '#0070f3'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f17;
+            color: #e2e8f0;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #233044;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+        .nav-pill {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .brand-glow {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-950">
+
+    <!-- Header Navigation -->
+    <header class="bg-app-panel/90 border-b border-app-border sticky top-0 z-50 backdrop-blur-md px-4 sm:px-8 py-3.5">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Brand Identity -->
+            <div class="flex items-center justify-between w-full md:w-auto">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 p-0.5 shadow-lg flex items-center justify-center">
+                        <div class="w-full h-full bg-app-bg rounded-[10px] flex items-center justify-center">
+                            <i class="fa-solid fa-cube text-emerald-400 text-lg"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-lg font-black text-white tracking-tight font-mono">WORK<span class="text-emerald-400">FOUND</span></h1>
+                            <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wide uppercase">PRO</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 font-medium">Versões, Addons e Tudo a cada dia</p>
+                    </div>
+                </div>
+
+                <div class="md:hidden flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Online
+                </div>
+            </div>
+
+            <!-- Custom Search Field -->
+            <div class="w-full md:w-96">
+                <div class="relative flex items-center">
+                    <div class="absolute left-3.5 text-slate-400 pointer-events-none text-xs">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" id="search-input" oninput="handleSearch()" placeholder="Pesquisar registros..." class="w-full bg-app-bg border border-app-border rounded-xl pl-9 pr-9 py-2.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/20 transition-all">
+                    <button id="clear-search" onclick="clearSearch()" class="hidden absolute right-3 text-slate-400 hover:text-white text-xs p-1">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-8 py-8 flex-grow w-full space-y-8">
+
+        <!-- Top Status Banner -->
+        <div class="bg-app-panel border border-app-border rounded-2xl p-6 relative overflow-hidden brand-glow">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                <div class="space-y-2 max-w-xl">
+                    <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1 rounded-lg text-[11px] font-semibold">
+                        <i class="fa-solid fa-server text-[10px]"></i>
+                        Servidores Work Found ativos
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                        Downloads Diretos Verificados
+                    </h2>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Acesse as compilações e atualizações do Minecraft indexadas em tempo real com integridade garantida.
+                    </p>
+                </div>
+
+                <!-- Custom Badges Block -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs w-full lg:w-auto">
+                    
+                    <!-- Badge 1: Mediafire Apenas -->
+                    <div class="bg-app-bg border border-app-border p-3.5 rounded-xl flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] text-white font-bold uppercase tracking-wider mb-1">Fontes</span>
+                        <div class="flex items-center gap-1.5 font-bold text-xs truncate">
+                            <span class="text-[#0070f3] flex items-center gap-1">
+                                <i class="fa-solid fa-cloud"></i> Mediafire
+                            </span>
+                            <i class="fa-solid fa-fire text-[#0070f3] text-xs"></i>
+                        </div>
+                    </div>
+
+                    <!-- Badge 2: Segurança -->
+                    <div class="bg-app-bg border border-app-border p-3.5 rounded-xl flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Segurança</span>
+                        <span class="font-bold text-emerald-400 text-xs flex items-center gap-1 truncate">
+                            <i class="fa-solid fa-shield-check text-[10px]"></i> 100% Verificado
+                        </span>
+                    </div>
+
+                    <!-- Badge 3: Infra -->
+                    <div class="bg-app-bg border border-app-border p-3.5 rounded-xl flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Infraestrutura</span>
+                        <span class="font-bold text-slate-200 text-xs flex items-center gap-1 truncate">
+                            <i class="fa-solid fa-network-wired text-[10px] text-slate-400"></i> Work Found PRO
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs Toolbar -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-app-border pb-4">
+            <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
+                <button onclick="switchTab('todas')" id="tab-todas" class="nav-pill bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 whitespace-nowrap shadow-sm">
+                    <i class="fa-solid fa-layer-group text-[11px]"></i> Todas as Versões
+                </button>
+                <button onclick="switchTab('bedrock')" id="tab-bedrock" class="nav-pill bg-app-panel hover:bg-app-card text-slate-400 border border-app-border px-4 py-2 rounded-xl font-medium text-xs flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-mobile-screen-button text-blue-400 text-[11px]"></i> Bedrock / PE
+                </button>
+                <button onclick="switchTab('patched')" id="tab-patched" class="nav-pill bg-app-panel hover:bg-app-card text-slate-400 border border-app-border px-4 py-2 rounded-xl font-medium text-xs flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-wand-magic-sparkles text-purple-400 text-[11px]"></i> Patched / Patch
+                </button>
+                <button onclick="switchTab('mods')" id="tab-mods" class="nav-pill bg-app-panel hover:bg-app-card text-slate-400 border border-app-border px-4 py-2 rounded-xl font-medium text-xs flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-puzzle-piece text-emerald-400 text-[11px]"></i> Mods / Addons
+                </button>
+                <button onclick="switchTab('colaboradores')" id="tab-colaboradores" class="nav-pill bg-app-panel hover:bg-app-card text-slate-400 border border-app-border px-4 py-2 rounded-xl font-medium text-xs flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-users text-amber-400 text-[11px]"></i> Colaboradores
+                </button>
+            </div>
+            
+            <span class="text-xs text-slate-400 font-medium">
+                Exibindo: <span id="displayed-count" class="text-emerald-400 font-bold">2</span> registros
+            </span>
+        </div>
+
+        <!-- Downloads Grid Container -->
+        <div id="downloads-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Os cards de download são renderizados via JavaScript -->
+        </div>
+
+        <!-- Dynamic Maintenance / Empty Container -->
+        <div id="maintenance-container" class="hidden flex-col items-center justify-center py-16 text-center">
+            <div class="bg-app-panel border border-app-border p-8 rounded-2xl max-w-md w-full shadow-xl">
+                <div class="w-14 h-14 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl shadow-inner">
+                    <i id="maintenance-icon" class="fa-solid fa-layer-group"></i>
+                </div>
+                <h3 class="text-base font-bold text-white mb-1.5">Nenhum Registro Encontrado</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                    Não encontramos arquivos nesta categoria ou na sua pesquisa.
+                </p>
+            </div>
+        </div>
+
+        <!-- Mods In Development Container -->
+        <div id="mods-container" class="hidden flex-col items-center justify-center py-20 text-center">
+            <div class="bg-app-panel border border-app-border p-8 rounded-2xl max-w-md w-full shadow-xl">
+                <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl shadow-inner">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                </div>
+                <h3 class="text-base font-bold text-white mb-1.5">Módulo em Desenvolvimento</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                    Addons, shaders e pacotes de texturas customizados serão disponibilizados em breve.
+                </p>
+                <span class="inline-flex items-center gap-1.5 text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-md">
+                    <i class="fa-solid fa-clock text-[9px]"></i> Aguarde atualizações
+                </span>
+            </div>
+        </div>
+
+        <!-- Colaboradores Container -->
+        <div id="colaboradores-container" class="hidden flex-col items-center justify-center py-12 text-center">
+            <div class="bg-app-panel border border-app-border p-8 rounded-2xl max-w-xl w-full shadow-xl space-y-6">
+                
+                <div class="space-y-2">
+                    <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 px-3 py-1 rounded-lg text-[11px] font-bold">
+                        <i class="fa-solid fa-users text-[10px]"></i>
+                        Equipe Oficial
+                    </div>
+                    <h3 class="text-xl font-bold text-white tracking-tight">
+                        Colaboradores Work Found
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Responsáveis pela manutenção, testes de compatibilidade e curadoria do portal.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left pt-2">
+                    <div class="bg-app-bg border border-app-border p-5 rounded-xl flex items-center justify-between group hover:border-amber-500/40 transition-all">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                                <i class="fa-solid fa-crown text-base"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-1.5">
+                                    <h4 class="text-sm font-bold text-white">Jls</h4>
+                                    <i class="fa-solid fa-crown text-amber-400 text-xs" title="Líder / Fundador"></i>
+                                </div>
+                                <span class="text-[10px] text-slate-400 font-medium">Fundador & Desenvolvedor</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-app-bg border border-app-border p-5 rounded-xl flex items-center justify-between group hover:border-blue-500/40 transition-all">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                                <i class="fa-solid fa-vial text-base"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-1.5">
+                                    <h4 class="text-sm font-bold text-white">Mzk</h4>
+                                    <i class="fa-solid fa-hammer text-blue-400 text-xs" title="Tester Oficial"></i>
+                                </div>
+                                <span class="text-[10px] text-slate-400 font-medium">Tester Oficial & Qualidade</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-app-bg/80 border border-app-border p-4 rounded-xl text-center space-y-2 mt-2">
+                    <p class="text-xs text-slate-300 font-medium leading-relaxed">
+                        Quer ter Seu Nome? Fale Comigo no Discord ou entre em Contato Com Algum desenvolvedor
+                    </p>
+                    <div class="inline-flex items-center gap-2 bg-[#5865F2]/10 border border-[#5865F2]/30 text-[#5865F2] px-3 py-1.5 rounded-lg text-xs font-bold font-mono">
+                        <i class="fa-brands fa-discord text-sm"></i>
+                        <span>flavi_x.s</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-app-border py-6 text-center text-xs text-slate-500 mt-auto bg-app-bg">
+        <p class="font-medium text-slate-400">Work Found &copy; 2026 — Todos os direitos reservados.</p>
+        <p class="text-[11px] text-slate-500 mt-1 flex items-center justify-center gap-2">
+            <span>Infraestrutura Work Found</span>
+            <span>&bull;</span>
+            <span class="text-emerald-400 font-medium">Sistemas Operacionais</span>
+        </p>
+    </footer>
+
+    <script>
+        const downloadsDatabase = [
+            {
+                id: 1,
+                title: "Minecraft 1.26.51.1",
+                category: "bedrock",
+                type: "Bedrock Edition",
+                size: "645 MB",
+                desc: "Versão oficial Bedrock para Android (arm64-v8a) com correções e suporte a servidores.",
+                downloads: "3,410",
+                link: "https://www.mediafire.com/file/atqvh4qix2e8t9y/Minecraft_1.26.51.1.apk/file",
+                icon: "fa-solid fa-mobile-screen-button",
+                badgeBg: "bg-blue-500/10 border-blue-500/20 text-blue-400"
+            },
+            {
+                id: 2,
+                title: "Minecraft 1.26.20.4 (ARM64-v8a)",
+                category: "bedrock",
+                type: "Bedrock Edition",
+                size: "645 MB",
+                desc: "Versão oficial Bedrock otimizada para arquitetura ARM64-v8a com estabilidade aprimorada.",
+                downloads: "2,940",
+                link: "https://www.mediafire.com/file/l0z4fc5dg2m8j2e/minecraft-1.26.20.4-arm64-v8a.apk/file",
+                icon: "fa-solid fa-mobile-screen-button",
+                badgeBg: "bg-blue-500/10 border-blue-500/20 text-blue-400"
+            }
+        ];
+
+        let currentTab = 'todas';
+        let searchQuery = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDownloads();
+        });
+
+        function switchTab(tab) {
+            currentTab = tab;
+            
+            document.querySelectorAll('.nav-pill').forEach(btn => {
+                btn.className = "nav-pill bg-app-panel hover:bg-app-card text-slate-400 border border-app-border px-4 py-2 rounded-xl font-medium text-xs flex items-center gap-2 whitespace-nowrap";
+            });
+
+            const activeBtn = document.getElementById(`tab-${tab}`);
+            if(activeBtn) {
+                activeBtn.className = "nav-pill bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 whitespace-nowrap shadow-sm";
+            }
+
+            const downloadsContainer = document.getElementById('downloads-container');
+            const mainContainer = document.getElementById('maintenance-container');
+            const modsContainer = document.getElementById('mods-container');
+            const colaboradoresContainer = document.getElementById('colaboradores-container');
+
+            modsContainer.classList.add('hidden');
+            modsContainer.classList.remove('flex');
+            colaboradoresContainer.classList.add('hidden');
+            colaboradoresContainer.classList.remove('flex');
+
+            if (tab === 'mods') {
+                downloadsContainer.classList.add('hidden');
+                mainContainer.classList.add('hidden');
+                mainContainer.classList.remove('flex');
+                modsContainer.classList.remove('hidden');
+                modsContainer.classList.add('flex');
+                document.getElementById('displayed-count').innerText = '0';
+            } else if (tab === 'colaboradores') {
+                downloadsContainer.classList.add('hidden');
+                mainContainer.classList.add('hidden');
+                mainContainer.classList.remove('flex');
+                colaboradoresContainer.classList.remove('hidden');
+                colaboradoresContainer.classList.add('flex');
+                document.getElementById('displayed-count').innerText = '0';
+            } else {
+                renderDownloads();
+            }
+        }
+
+        function handleSearch() {
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('clear-search');
+            searchQuery = input.value.trim().toLowerCase();
+
+            if (searchQuery.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            if (currentTab === 'mods' || currentTab === 'colaboradores') {
+                switchTab('todas');
+            } else {
+                renderDownloads();
+            }
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            searchQuery = '';
+            document.getElementById('clear-search').classList.add('hidden');
+            renderDownloads();
+        }
+
+        function renderDownloads() {
+            const downloadsContainer = document.getElementById('downloads-container');
+            const emptyContainer = document.getElementById('maintenance-container');
+            
+            downloadsContainer.innerHTML = '';
+
+            const filtered = downloadsDatabase.filter(item => {
+                const matchTab = (currentTab === 'todas') || (item.category === currentTab);
+                const matchQuery = item.title.toLowerCase().includes(searchQuery) ||
+                                   item.desc.toLowerCase().includes(searchQuery);
+                return matchTab && matchQuery;
+            });
+
+            document.getElementById('displayed-count').innerText = filtered.length;
+
+            if (filtered.length === 0) {
+                downloadsContainer.classList.add('hidden');
+                emptyContainer.classList.remove('hidden');
+                emptyContainer.classList.add('flex');
+                return;
+            }
+
+            emptyContainer.classList.add('hidden');
+            emptyContainer.classList.remove('flex');
+            downloadsContainer.classList.remove('hidden');
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-app-card border border-app-border hover:border-emerald-500/40 p-5 rounded-2xl flex flex-col justify-between gap-4 transition-all duration-200 shadow-md";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-lg border ${item.badgeBg}">
+                                <i class="${item.icon} text-xs"></i> ${item.type}
+                            </span>
+                            <span class="text-[11px] font-semibold text-slate-400 bg-app-bg border border-app-border px-2.5 py-0.5 rounded-lg flex items-center gap-1">
+                                <i class="fa-solid fa-hard-drive text-[10px] text-slate-500"></i> ${item.size}
+                            </span>
+                        </div>
+
+                        <h3 class="text-base font-bold text-white mb-1 flex items-center gap-2">
+                            ${item.title}
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-1">${item.desc}</p>
+                    </div>
+
+                    <div class="space-y-3 pt-3 border-t border-app-border/60">
+                        <div class="flex justify-between items-center text-[11px] text-slate-400 font-medium">
+                            <span class="flex items-center gap-1.5">
+                                <i class="fa-solid fa-download text-emerald-400 text-[10px]"></i> ${item.downloads} downloads
+                            </span>
+                            <span class="text-emerald-400 flex items-center gap-1 font-semibold">
+                                <i class="fa-solid fa-circle-check text-[10px]"></i> Mediafire Verificado
+                            </span>
+                        </div>
+
+                        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-2.5 px-4 rounded-xl text-center transition duration-200 shadow-lg shadow-emerald-600/10 flex items-center justify-center gap-2 text-xs">
+                            <i class="fa-solid fa-download text-xs"></i> Baixar Arquivo
+                        </a>
+                        
+                        <div class="text-center text-[10px] text-slate-500 font-medium">
+                            Work Found PRO
+                        </div>
+                    </div>
+                `;
+
+                downloadsContainer.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
